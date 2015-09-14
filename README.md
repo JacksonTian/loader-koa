@@ -19,34 +19,30 @@ Loader Koa是一个适配Koa的静态资源加载器，它基于静态文件的�
 <link rel="stylesheet" href="/assets/styles/home.styl" />
 ```
 
-如果没有Loader Connect的支持，它们将向浏览器输出原始的编码。
+如果没有Loader Koa的支持，它们将向浏览器输出原始的编码。
 
 然而浏览器并不一定能直接运行`.es`/`.coffee`/`.less`/`.styl`文件。
 
 ### 启用编译支持
-在你的Connect/Express项目中，可以通过如下方式来启用文件的自动编译。
+在你的Koa项目中，可以通过如下方式来启用文件的自动编译。
 
 安装本模块：
 
 ```sh
-$ npm install loader-connect
+$ npm install loader-koa
 ```
 
 添加中间件：
 
 ```js
-var Loader = require('loader-connect');
-// Loader.less一定要在静态文件中间件之前，否则.less文件会被静态文件中间件所处理
-app.use(Loader.less(__dirname));
-// Loader.stylus一定要在静态文件中间件之前，否则.styl文件会被静态文件中间件所处理
-app.use(Loader.stylus(__dirname));
-// Loader.coffee一定要在静态文件中间件之前，否则.coffee文件会被静态文件中间件所处理
-app.use(Loader.coffee(__dirname));
-// Loader.babel一定要在静态文件中间件之前，否则.es文件会被静态文件中间件所处理
-app.use(Loader.babel(__dirname));
-app.use('/assets', connect.static(__dirname + '/assets', {
-  maxAge: 3600000 * 24 * 365
-}));
+var loader = require('loader-koa');
+var koa = require('koa');
+var app = koa();
+// 以下中间件需要放置在静态文件中间件之前，否则将会被静态文件中间件当作普通文件处理
+app.use(loader.less(__dirname));
+app.use(loader.stylus(__dirname));
+app.use(loader.babel(__dirname));
+app.use(loader.coffee(__dirname));
 ```
 
 以上的方式特别适合在开发环境中进行。
