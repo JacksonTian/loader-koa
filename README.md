@@ -1,7 +1,7 @@
-Loader Connect
+Loader Koa
 =================
 
-Loader Connect是一个适配Connect/Express的静态资源加载器，它基于静态文件的文件扩展名来对源文件进行编译。
+Loader Koa是一个适配Koa的静态资源加载器，它基于静态文件的文件扩展名来对源文件进行编译。
 
 目前支持`.less`、`.styl`编译为CSS文件。`.coffee`、`.es`编译为普通的JavaScript文件。
 
