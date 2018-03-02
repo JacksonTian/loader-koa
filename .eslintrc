@@ -36,13 +36,13 @@
     "no-use-before-define": 2,
     "no-unused-vars": [2, {"args": "none"}],
     "no-undef": 2,
-    "callback-return": [2, ["callback", "cb", "next"]],
+    "callback-return": [2, ["callback", "cb"]],
     "global-require": 0,
     "no-console": 0,
     "require-yield": 0
   },
   "env": {
-    "es7": true,
+    "es6": true,
     "node": true,
     "browser": true
   },
