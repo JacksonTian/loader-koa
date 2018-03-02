@@ -1,6 +1,6 @@
 {
   "name": "loader-koa",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Loader middleware for koa",
   "main": "koa.js",
   "scripts": {
