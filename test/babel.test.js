@@ -1,7 +1,17 @@
+'use strict';
+
 var request = require('supertest');
 var server = require('./common');
 
 describe('babel', function () {
+  before((done) => {
+    server.listen(done);
+  });
+
+  after((done) => {
+    server.close(done);
+  });
+
   it('should 200', function (done) {
     request(server)
     .get('/assets/babel.es')
