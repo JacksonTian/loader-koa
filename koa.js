@@ -115,7 +115,7 @@ exports.babel = function (root) {
           return;
         }
         // 调用coffee-script编译源文件
-        var output = babel.transform(content);
+        var output = babel.transform(content, {presets: ['es2015']});
         ctx.type = 'text/javascript';
         ctx.body = output.code;
         return;
