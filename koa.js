@@ -20,14 +20,15 @@ exports.less = function (root) {
       var urlpath = ctx.request.path;
       if (urlpath.endsWith('.less')) {
         var content;
+        var filename = path.join(root, urlpath)
         try {
-          content = await readFile(path.join(root, urlpath), 'utf8');
+          content = await readFile(filename, 'utf8');
         } catch (ex) {
           ctx.status = 404;
           ctx.body = 'Cannot find ' + ctx.originalUrl + '\n';
           return;
         }
-        var result = await less.render(content);
+        var result = await less.render(content, {filename});
         ctx.type = 'text/css';
         ctx.body = result.css;
         return;
